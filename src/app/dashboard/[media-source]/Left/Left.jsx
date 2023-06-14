@@ -1,11 +1,11 @@
 import Histogram from "./Histogram/Histogram";
 import Words from "./Words/Words";
 
-export default function Left() {
+export default function Left({ results }) {
   return (
     <div>
-      <Histogram />
-      <Words />
+      <Histogram results={results} />
+      <Words results={results} />
     </div>
   );
 }

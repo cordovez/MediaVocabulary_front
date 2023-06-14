@@ -18,10 +18,18 @@ export default function MediaSelector() {
         className="select select-primary w-full max-w-xs"
       >
         <option defaultValue>Select Media Source</option>
-        <option value="Guardian">The Guardian: Opinions</option>
-        <option value="NYT">The New York Times</option>
-        <option value="SMH">Sydney Morning Herald</option>
-        <option value="WP">The Washington Post</option>
+        <option value="guardian" key="guardian">
+          The Guardian
+        </option>
+        <option value="latimes" key="latimes">
+          The L.A. Times
+        </option>
+        <option value="independent" key="independent">
+          The Independent
+        </option>
+        <option value="smh" key="smh">
+          The Sydney Morning Herald
+        </option>
       </select>
     </div>
   );

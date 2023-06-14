@@ -5,7 +5,7 @@ export default function MediaIdentity() {
   const pathname = usePathname();
   const source = pathname.split("/")[2];
   let label = "";
-  console.log(source);
+  // console.log(source);
   switch (source) {
     case "Select%20Media%20Source":
       label = "Please Select a valid source";
