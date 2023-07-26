@@ -47,6 +47,8 @@ export default async function SourceList({ source, onGetAnalysis }) {
         <div className="card-body">
           <div className="prose ">
             <div className="flex items-center justify-between">
+              <p>Last updated: </p>
+              <button className="btn btn-primary">Update</button>
               <h2>Articles</h2>
               <button className="btn btn-secondary">Analyse All</button>
             </div>
