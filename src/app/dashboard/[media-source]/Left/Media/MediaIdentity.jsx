@@ -1,44 +1,33 @@
 "use client";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function MediaIdentity() {
   const pathname = usePathname();
   const source = pathname.split("/")[2];
-  let label = "";
-  // console.log(source);
+  let label;
   switch (source) {
     case "Select%20Media%20Source":
       label = "Please Select a valid source";
       break;
-    case "Guardian":
-      label = "The Guardian: Opinions";
+    case "guardian":
+      label = "The Guardian";
       break;
-    case "NYT":
-      label = "The New York Times";
+    case "independent":
+      label = "Independent";
       break;
 
-    case "SMH":
+    case "smh":
       label = "The Sydney Morning Herald";
       break;
 
-    case "WP":
-      label = "The Washington Post";
+    case "latimes":
+      label = "The L.A. Times";
       break;
   }
   return (
-    <div
-      className="flex justify-between prose-sm"
-      // style={{
-      //   display: "flex",
-      //   justifyContent: "space-between",
-      //   marginBottom: "2rem",
-      // }}
-    >
+    <div className="flex justify-center prose-sm pb-10">
       <h1>{label}</h1>
-      <div>
-        <p> XXXX word parsed</p>
-      </div>
-      <p>23 May 2023</p>
     </div>
   );
 }
