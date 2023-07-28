@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
-export default function Table({ source }) {
-  const dataURL = process.env.NEXT_PUBLIC_BASE_URL;
+export default function Table() {
+  const dataURL = process.env.NEXT_PUBLIC_BASE_URL; //for fetching
 
-  const [text, setText] = useState();
+  const pathname = usePathname();
+  const source = pathname.split("/")[2];
+
   const [articles, setArticles] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -25,15 +28,12 @@ export default function Table({ source }) {
         const data = await res.json();
         setArticles(data);
         setLoading(false);
-
-        // setText(response.json());
       } catch (error) {
         console.log(error);
       }
     }
     getArticlesInfo();
   }, [dataURL, source]);
-  //   console.log(articles);
   if (!loading) {
     return (
       <div className="overflow-x-auto ">

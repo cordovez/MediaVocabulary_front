@@ -2,29 +2,14 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import MediaIdentity from "./Left/Media/MediaIdentity";
-import Left from "./Left/Left";
-import Right from "./Right/Right";
+import Table from "./components/ArticlesTable";
+import PartsOfSpeech from "./components/PartsOfSpeech";
 
 export default function MediaSource() {
-  const pathname = usePathname();
-  const source = pathname.split("/")[2];
-
-  const [analysisResults, setAnalysisResults] = useState(null);
-
-  const handleAnalysisResults = (results) => {
-    setAnalysisResults(results);
-  };
-
   return (
-    <div style={{ display: "flex", padding: "3rem" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {/* <MediaIdentity /> */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <Right source={source} onGetAnalysis={handleAnalysisResults} />
-          <Left results={analysisResults} />
-        </div>
-      </div>
+    <div className="flex flex-col items-center">
+      <PartsOfSpeech />
+      <Table />
     </div>
   );
 }
