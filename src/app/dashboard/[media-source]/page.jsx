@@ -19,10 +19,10 @@ export default function MediaSource() {
   return (
     <div style={{ display: "flex", padding: "3rem" }}>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <MediaIdentity />
-        <div style={{ display: "flex" }}>
-          <Left results={analysisResults} />
+        {/* <MediaIdentity /> */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <Right source={source} onGetAnalysis={handleAnalysisResults} />
+          <Left results={analysisResults} />
         </div>
       </div>
     </div>

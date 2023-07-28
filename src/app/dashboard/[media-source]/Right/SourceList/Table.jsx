@@ -15,20 +15,7 @@ export default function Table({ source }) {
 
   useEffect(() => {
     setLoading(true);
-    async function getAllText() {
-      try {
-        const res = await fetch(`${dataURL}aggregated_content/${source}`);
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await res.json();
-        setText(data);
 
-        // setText(response.json());
-      } catch (error) {
-        console.log(error);
-      }
-    }
     async function getArticlesInfo() {
       try {
         const res = await fetch(`${dataURL}${source}`);
@@ -45,39 +32,40 @@ export default function Table({ source }) {
       }
     }
     getArticlesInfo();
-    getAllText();
   }, [dataURL, source]);
   //   console.log(articles);
   if (!loading) {
     return (
-      <>
-        <table>
+      <div className="overflow-x-auto ">
+        <table className="table table-xs">
           <thead>
             <tr>
+              <th></th>
               <th>Title</th>
               <th>Author</th>
-              <th>Summary</th>
+              {/* <th>Summary</th> */}
               <th>Published on</th>
             </tr>
           </thead>
           <tbody>
-            {articles.map((article) => {
+            {articles.map((article, i) => {
               return (
                 <tr
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 "
                   key={article._id}
                 >
-                  <th className="px-6 py-4 ">
+                  <th>{i + 1}</th>
+                  <td className="px-6 py-4  ">
                     <a
                       href={article.url}
                       target="_blank"
-                      className="font-medium   hover:underline"
+                      className="font-medium hover:underline "
                     >
                       {article.article_title}
                     </a>
-                  </th>
+                  </td>
                   <td className="px-6 py-4">{article.author}</td>
-                  <td className="px-6 py-4">{article.summary}</td>
+                  {/* <td className="px-6 py-4">{article.summary}</td> */}
                   <td className="px-6 py-4">
                     {formatDate(article.date_of_pub)}
                   </td>
@@ -86,7 +74,7 @@ export default function Table({ source }) {
             })}
           </tbody>
         </table>
-      </>
+      </div>
     );
   }
 }

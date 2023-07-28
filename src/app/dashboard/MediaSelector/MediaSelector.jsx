@@ -8,6 +8,7 @@ export default function MediaSelector() {
 
   const onChange = (event) => {
     const value = event.target.value;
+    event.preventDefault();
     setSelectValue(value);
     router.push(`/dashboard/${value}`);
   };

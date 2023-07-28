@@ -5,7 +5,7 @@ export default function Left({ results }) {
   return (
     <div>
       <Histogram results={results} />
-      <Words results={results} />
+      {/* <Words results={results} /> */}
     </div>
   );
 }
