@@ -1,7 +1,7 @@
 export default function POSTable({ count, list, label, part_of_speech }) {
   return (
-    <div className="overflow-x-auto h-96  flex-initial">
-      <table className="table table-xs table-pin-rows">
+    <div className="overflow-x-auto h-96  flex-initial ">
+      <table className="table table-xs table-pin-rows ">
         <thead>
           <tr>
             <th>
@@ -25,7 +25,7 @@ export default function POSTable({ count, list, label, part_of_speech }) {
                   </label>
                 </th>
                 <td>{i + 1}</td>
-                <td>{part_of_speech}</td>
+                <td>{part_of_speech.toLowerCase()}</td>
               </tr>
             );
           })}

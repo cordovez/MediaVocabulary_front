@@ -17,7 +17,7 @@ export default function PartsOfSpeech() {
     const verb_list = [];
     const adjective_list = pos.pos.adjectives;
     const adverb_list = pos.pos.adverbs;
-    const phrasal_verbs = "none yet";
+    const phrasal_verbs = pos.phrasal_verbs;
 
     for (let i = 0; i < pos.pos.verbs.length; i++) {
       const verb_pair = pos.pos.verbs[i];
@@ -43,6 +43,12 @@ export default function PartsOfSpeech() {
           list={adverb_list}
           label={"Adverb"}
           part_of_speech={"adverb"}
+        />
+        <POSTable
+          count={phrasal_verbs.length}
+          list={phrasal_verbs}
+          label={"Phrasal Verbs"}
+          part_of_speech={"phrasal_verbs"}
         />
       </div>
     );
