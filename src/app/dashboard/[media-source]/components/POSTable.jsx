@@ -1,4 +1,4 @@
-export default function POSTable({ count, list, label, part_of_speech }) {
+export default function POSTable({ count, list, label }) {
   return (
     <div className="overflow-x-auto h-96  flex-initial ">
       <table className="table table-xs table-pin-rows ">
@@ -16,7 +16,7 @@ export default function POSTable({ count, list, label, part_of_speech }) {
           </tr>
         </thead>
         <tbody>
-          {list.map((part_of_speech, i) => {
+          {list.map((word, i) => {
             return (
               <tr key={i}>
                 <th>
@@ -25,7 +25,8 @@ export default function POSTable({ count, list, label, part_of_speech }) {
                   </label>
                 </th>
                 <td>{i + 1}</td>
-                <td>{part_of_speech.toLowerCase()}</td>
+                {/* <td>{part_of_speech.toLowerCase()}</td> */}
+                <td>{word}</td>
               </tr>
             );
           })}

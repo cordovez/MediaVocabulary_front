@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-export default function Table() {
+export default async function ArticlesTable() {
   const dataURL = process.env.NEXT_PUBLIC_BASE_URL; //for fetching
 
   const pathname = usePathname();
   const source = pathname.split("/")[2];
 
-  const [articles, setArticles] = useState();
-  const [loading, setLoading] = useState(true);
+  // const [articles, setArticles] = useState();
+  // const [loading, setLoading] = useState(true);
 
   const formatDate = (datetimeString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -16,24 +16,38 @@ export default function Table() {
     return dateObject.toLocaleDateString(undefined, options);
   };
 
-  useEffect(() => {
-    setLoading(true);
+  // useEffect(() => {
+  //   setLoading(true);
 
-    async function getArticlesInfo() {
-      try {
-        const res = await fetch(`${dataURL}${source}`);
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await res.json();
-        setArticles(data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
+  //   async function getArticlesInfo() {
+  //     try {
+  //       const res = await fetch(`${dataURL}${source}`);
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch data");
+  //       }
+  //       const data = await res.json();
+  //       setArticles(data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getArticlesInfo();
+  // }, [dataURL, source]);
+  async function getArticlesInfo() {
+    try {
+      const res = await fetch(`${dataURL}${source}`);
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
       }
+      return await res.json();
+      // setArticles(data);
+      // setLoading(false);
+    } catch (error) {
+      console.log(error);
     }
-    getArticlesInfo();
-  }, [dataURL, source]);
+  }
+  articles = getArticlesInfo();
   if (!loading) {
     return (
       <div className="overflow-x-auto ">
