@@ -1,58 +1,31 @@
-// "use client";
-import { usePathname } from "next/navigation";
-
-import ArticlesTable from "./components/ArticlesTable";
-import PartsOfSpeech from "./components/PartsOfSpeech";
+"use client";
+import Article from "./components/articleCard";
+import Stats from "./components/articleStats";
 import getArticles from "@/lib/getArticles";
+import WhichMedia from "@/lib/whichMedia";
+import { use } from "react";
 
-export default async function MediaSource() {
-  const articles = await getArticles("guardian");
+export default function MediaSource() {
+  const dataPromise = getArticles(WhichMedia());
+  const source = WhichMedia();
+  const articlesData = use(dataPromise);
+  return (
+    <div>
+      {articlesData.map((article) => {
+        // const article_info = {
+        //   title: article.article_title,
+        //   summary: article.summary,
+        //   author: article.author,
+        //   published: article.date_of_pub,
+        // };
 
-  const content = (
-    <div className="prose">
-      <div>
-        <h1>Title</h1>
-      </div>
-      <div>
-        {articles.map((article, i) => {
-          return (
-            <div key={article._id} className=" mt-8">
-              <h1>{i + 1}</h1>
-              <p>title: {article.article_title}</p>
-              <p>summary: {article.summary}</p>
-              <p>author: {article.author}</p>
-              <p>date of publication: {article.date_of_pub}</p>
-            </div>
-          );
-        })}
-      </div>
+        return (
+          <Article key={article._id} article={article}>
+            <Stats source={source} id={article._id} />
+          </Article>
+        );
+      })}
+      ;
     </div>
   );
-
-  return content;
-  // const pathname = usePathname();
-  // const source = pathname.split("/")[2];
-  // function mediaName() {
-  //   switch (source) {
-  //     case "latimes":
-  //       return "Los Angeles Times";
-  //       break;
-  //     case "guardian":
-  //       return "The Guardian";
-  //       break;
-  //     case "independent":
-  //       return "The Independent";
-  //       break;
-  //     case "smh":
-  //       return "The Sydney Morning Herald";
-  //       break;
-  //   }
-  // }
-  // return (
-  //   <div className="flex flex-col items-center">
-  //     <h1 className="prose">{mediaName()}</h1>
-  //     <PartsOfSpeech source={source} />
-  //     {/* <ArticlesTable /> */}
-  //   </div>
-  // );
 }

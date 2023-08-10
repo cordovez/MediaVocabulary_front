@@ -10,12 +10,6 @@ export default async function ArticlesTable() {
   // const [articles, setArticles] = useState();
   // const [loading, setLoading] = useState(true);
 
-  const formatDate = (datetimeString) => {
-    const options = { year: "numeric", month: "short", day: "numeric" };
-    const dateObject = new Date(datetimeString);
-    return dateObject.toLocaleDateString(undefined, options);
-  };
-
   // useEffect(() => {
   //   setLoading(true);
 

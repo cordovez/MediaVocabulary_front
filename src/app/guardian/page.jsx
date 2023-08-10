@@ -1,9 +1,15 @@
 import Link from "next/link";
 import getArticles from "@/lib/getArticles";
+import getVocab from "@/lib/getArticleVocab";
 
 export default async function TheGuardian() {
-  const articles = await getArticles("guardian");
-  console.log("hello");
+  // const articlesData = await getArticles("smh");
+  // const vocabularyData = await getVocab("latimes", "64d36dc81ff01b9ffd94fa7f");
+
+  // const [articles, vocabulary] = await Promise.all([
+  //   articlesData,
+  // vocabularyData,
+  // ]);
 
   const content = (
     <div className="prose">
@@ -11,7 +17,7 @@ export default async function TheGuardian() {
         <h1>Title</h1>
       </div>
       <div>
-        {articles.map((article, i) => {
+        {articlesData.map((article, i) => {
           return (
             <div key={article._id} className=" mt-8">
               <h1>{i + 1}</h1>
