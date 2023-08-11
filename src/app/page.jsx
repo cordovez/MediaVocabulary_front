@@ -2,7 +2,7 @@
 
 export default function Page() {
   return (
-    <div className="container mx-auto md">
+    <div>
       <p>Instructions</p>
     </div>
   );
