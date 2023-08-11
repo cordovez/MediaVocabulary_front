@@ -1,12 +1,11 @@
-"useClient";
+// "useClient";
 import { use } from "react";
 import getVocab from "@/lib/getArticleVocab";
 
 export default function Stats({ source, id }) {
-  //   const dataPromise = getVocab(source, id);
+  const dataPromise = getVocab(source, id);
+  const stats = use(dataPromise);
 
-  const stats = use(getVocab(source, id));
-  console.log(stats);
   return (
     <div className=" card bg-white text-black rounded-none">
       <div className="card-body">
