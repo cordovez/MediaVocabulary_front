@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className} suppressHydrationWarning={true}>
         <Masthead />
 
-        <div className="container  flex  ">{children}</div>
+        <div className="bg-secondary">{children}</div>
       </body>
     </html>
   );

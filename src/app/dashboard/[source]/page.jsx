@@ -2,32 +2,14 @@ import Article from "./components/articleCard";
 import Stats from "./components/articleStats";
 import getArticles from "@/lib/getArticles";
 import { Suspense, use } from "react";
-
+import UpdateArticles from "./components/updateButton";
+import StatsSkeleton from "./components/statsSkeleton";
+import ArticleSkeleton from "./components/ArticleSkeleton";
 export default function MediaSource({ params }) {
   const source = params.source;
 
   const dataPromise = getArticles(source);
   const articlesData = use(dataPromise);
-
-  const skeleton = (
-    <div className=" card bg-white text-black rounded-none">
-      <div className="card-body">
-        <h2>Stats</h2>
-        <p>sentences: ... Loading ...</p>
-        <p>phrasal verbs: ... Loading ... </p>
-        <p>adverbs: ... Loading ... </p>
-        <p>adjectives: ... Loading ...</p>
-        <p>verbs: ... Loading ... </p>
-      </div>
-    </div>
-  );
-  const articleSkeleton = (
-    <div className="card w-80 bg-secondary shadow-xl">
-      <div className="card-body">
-        <h1> ... Loading ...</h1>
-      </div>
-    </div>
-  );
 
   const pageTitle =
     source == "guardian"
@@ -41,15 +23,16 @@ export default function MediaSource({ params }) {
       : "";
 
   return (
-    <div className="prose flex content-center ">
-      <h1>{pageTitle}</h1>
-      <div className="flex flex-wrap gap-3">
+    <div className=" flex flex-col items-center  ">
+      <h1 className="text-4xl font-extrabold mb-4 p-2 ">{pageTitle}</h1>
+      <UpdateArticles />
+      <div className="flex flex-wrap justify-center gap-2 ">
         {articlesData.map((article) => {
           return (
             <div key={article._id} className="">
-              <Suspense fallback={articleSkeleton}>
-                <Article article={article}>
-                  <Suspense fallback={skeleton}>
+              <Suspense fallback={<ArticleSkeleton />}>
+                <Article article={article} source={source}>
+                  <Suspense fallback={<StatsSkeleton />}>
                     <Stats source={source} id={article._id} />
                   </Suspense>
                 </Article>
@@ -59,5 +42,23 @@ export default function MediaSource({ params }) {
         })}
       </div>
     </div>
+    // <div>
+    //   <h1 className="prose">{pageTitle}</h1>
+    //   <div className="flex flex-row flex-wrap gap-3 w-full">
+    //     {articlesData.map((article) => {
+    //       return (
+    //         <div key={article._id} className="">
+    //           <Suspense fallback={articleSkeleton}>
+    //             <Article article={article}>
+    //               <Suspense fallback={skeleton}>
+    //                 <Stats source={source} id={article._id} />
+    //               </Suspense>
+    //             </Article>
+    //           </Suspense>
+    //         </div>
+    //       );
+    //     })}
+    //   </div>
+    // </div>
   );
 }

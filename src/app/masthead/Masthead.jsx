@@ -3,22 +3,20 @@ import MediaNav from "../components/media_nav";
 
 export default function Masthead() {
   const logo = <h1>Au Courant</h1>;
-  const login = (
-    <button className="btn btn-primary flex-none w-32">login</button>
-  );
+  const login = <button className="btn btn-primary btn-sm w-24">login</button>;
 
   return (
     <>
-      <div className="flex justify-between  p-12 items-center bg-base-200 mb-12">
-        <div className="prose flex flex-col ">
-          <div className="flex justify-between ">
-            <Link href={"/"} className="no-underline hover:underline">
+      <div className="flex flex-col  bg-primary-content  p-4 md:p-12 ">
+        <div className="flex items-center justify-between  mb-2 ">
+          <div>
+            <Link href={"/"} className="prose no-underline hover:underline">
               {logo}
             </Link>
-            {login}
           </div>
-          <MediaNav />
+          <div>{login}</div>
         </div>
+        <MediaNav />
       </div>
     </>
   );
