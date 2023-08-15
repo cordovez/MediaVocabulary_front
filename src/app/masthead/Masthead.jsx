@@ -1,23 +1,110 @@
 import Link from "next/link";
 import MediaNav from "../components/media_nav";
+import DropdownNav from "../components/dropdown_nav";
 
 export default function Masthead() {
   const logo = <h1>Au Courant</h1>;
   const login = <button className="btn btn-primary btn-sm w-24">login</button>;
 
   return (
-    <>
-      <div className="flex flex-col  bg-primary-content  p-4 md:p-12 ">
-        <div className="flex items-center justify-between  mb-2 ">
-          <div>
-            <Link href={"/"} className="prose no-underline hover:underline">
-              {logo}
-            </Link>
-          </div>
-          <div>{login}</div>
+    <div className="navbar bg-base-100">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          {/* <DropdownNav /> */}
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Parent</a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>Item 3</a>
+            </li>
+          </ul>
         </div>
-        <MediaNav />
+        <a className="btn btn-ghost normal-case text-xl">AuCourant</a>
       </div>
-    </>
+      <div className="navbar-center hidden lg:flex">
+        <MediaNav />
+        {/* <ul className="menu menu-horizontal px-1">
+          <li>
+            <a>Item 1</a>
+          </li>
+          <li tabIndex={0}>
+            <details>
+              <summary>Parent</summary>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <a>Item 3</a>
+          </li>
+        </ul> */}
+      </div>
+      <div className="navbar-end">
+        <a className="btn">Login</a>
+      </div>
+    </div>
   );
+}
+
+{
+  /* <div className="navbar bg-base-100">
+  <div className="navbar-start">
+    <div className="dropdown">
+      <label tabIndex={0} className="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </label>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a>The Guardian</a></li>
+        <li><a>The Independent</a></li>
+        <li><a>L.A. Times</a></li>
+        <li><a>The Sydney Morning Herald</a></li>
+      </ul>
+    </div>
+    <a className="btn btn-ghost normal-case text-xl">Au Courant</a>
+  </div>
+  <div className="navbar-center hidden lg:flex">
+            <MediaNav />
+
+  </div>
+  <div className="navbar-end">
+    {login}
+  </div>
+</div> */
 }
