@@ -10,10 +10,10 @@ export default function MediaNav() {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: "The Guardian", href: "/dashboard/guardian" },
-    { name: "The Independent", href: "/dashboard/independent" },
-    { name: "Los Angeles Times", href: "/dashboard/latimes" },
-    { name: "The Sydney Morning Herald", href: "/dashboard/smh" },
+    { name: "The Guardian", href: "/guardian" },
+    { name: "The Independent", href: "/independent" },
+    { name: "Los Angeles Times", href: "/latimes" },
+    { name: "The Sydney Morning Herald", href: "/smh" },
   ];
 
   return (

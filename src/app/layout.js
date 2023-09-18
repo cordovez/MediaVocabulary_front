@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className} suppressHydrationWarning={true}>
         <Masthead />
 
-        <div className="bg-secondary">{children}</div>
+        <div className="bg-secondary w-5/6 mx-auto p-10 mt-20">{children}</div>
       </body>
     </html>
   );
