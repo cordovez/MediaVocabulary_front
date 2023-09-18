@@ -23,34 +23,25 @@ export default function MediaSource({ params }) {
       : "";
 
   return (
-    <div className=" flex flex-col items-center  ">
-      <h1 className="text-4xl font-extrabold mb-4 p-2 ">{pageTitle}</h1>
-      <UpdateArticles />
-      <div className="flex flex-wrap justify-center gap-2 ">
-        {articlesData.map((article) => {
-          return (
-            <div key={article._id} className="">
-              <Suspense fallback={<ArticleSkeleton />}>
-                <Article article={article} source={source}>
-                  <Suspense fallback={<StatsSkeleton />}>
-                    <Stats source={source} id={article._id} />
-                  </Suspense>
-                </Article>
-              </Suspense>
-            </div>
-          );
+    <div>
+      <h1>{pageTitle}</h1>
+      <div>
+        {articlesData.map((item) => {
+          console.log(item.article_title);
+          <h2>{item.article_title}</h2>;
         })}
       </div>
     </div>
-    // <div>
-    //   <h1 className="prose">{pageTitle}</h1>
-    //   <div className="flex flex-row flex-wrap gap-3 w-full">
+    // <div className=" flex flex-col items-center  ">
+    //   <h1 className="text-4xl font-extrabold mb-4 p-2 ">{pageTitle}</h1>
+    //   <UpdateArticles />
+    //   <div className="flex flex-wrap justify-center gap-2 ">
     //     {articlesData.map((article) => {
     //       return (
     //         <div key={article._id} className="">
-    //           <Suspense fallback={articleSkeleton}>
-    //             <Article article={article}>
-    //               <Suspense fallback={skeleton}>
+    //           <Suspense fallback={<ArticleSkeleton />}>
+    //             <Article article={article} source={source}>
+    //               <Suspense fallback={<StatsSkeleton />}>
     //                 <Stats source={source} id={article._id} />
     //               </Suspense>
     //             </Article>
