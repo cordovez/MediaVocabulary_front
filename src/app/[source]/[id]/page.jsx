@@ -11,21 +11,16 @@ export default function Article({ params }) {
 
   const verbs = vocabulary.pos.verbs;
   const adverbs = vocabulary.pos.adverbs;
-  const adjective = vocabulary.pos.adjectives;
+  const adjectives = vocabulary.pos.adjectives;
   const phrasalVerbs = vocabulary.phrasal_verbs;
-
-  // function returnItems(list) {
-  //   for (let i = 0; i < list.length; i++) {
-  //     let items = [];
-  //     items.push(<li key={i}> {element} </li>);
-  //     return items;
-  //   }
-  // }
 
   if (vocabulary);
   return (
     <div>
-      <WordList list={verbs} color={"blue"} />
+      <WordList list={verbs} title={"Verbs"} />
+      <WordList list={adjectives} title={"Adjectives"} />
+      <WordList list={adverbs} title={"Adverbs"} />
+      <WordList list={phrasalVerbs} title={"Phrasal Verbs"} />
     </div>
   );
 }
